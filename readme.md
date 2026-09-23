@@ -129,35 +129,35 @@ and let the compiler name every place that needs attention, one build at a time:
 case linear, easeInOut
 ```
 
-**2. `HouseAnimationStyle.title` **
+**2. `HouseAnimationStyle.title`**
 
 ```swift
 case .easeInOut: 
     return "Ease In-Out"
 ```
 
-**3. `HouseAnimationStyle.description` **
+**3. `HouseAnimationStyle.description`**
 
 ```swift
 case .easeInOut:
     return "Smooth start and finish for a calm, natural delivery."
 ```
 
-**4. `HouseAnimationStyle.parameters` **
+**4. `HouseAnimationStyle.parameters`**
 
 ```swift
 case .linear, .easeInOut: 
     return [.duration]
 ```
 
-**5. `HouseAnimator.animation` **
+**5. `HouseAnimator.animation`**
 
 ```swift
 case .easeInOut: 
     selectedAnimation = .easeInOut(duration: _tuning.duration)
 ```
 
-**6. `HouseAnimator.playDuration` **
+**6. `HouseAnimator.playDuration`**
 ```swift
 case .linear, .easeInOut: 
     play = _tuning.duration
