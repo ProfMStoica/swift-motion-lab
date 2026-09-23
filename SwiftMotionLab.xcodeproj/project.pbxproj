@@ -257,6 +257,7 @@
 		000000000000000111000000 /* Debug configuration for PBXNativeTarget "SwiftMotionLab" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = SwiftMotionLab;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XG36Y69APV;
@@ -297,6 +298,7 @@
 		000000000000000112000000 /* Release configuration for PBXNativeTarget "SwiftMotionLab" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = SwiftMotionLab;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XG36Y69APV;
