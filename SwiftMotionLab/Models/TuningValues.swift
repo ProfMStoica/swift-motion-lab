@@ -101,7 +101,7 @@ public struct HouseParameter: Identifiable {
 
 ///House tuning parameters
 extension HouseParameter {
-    public static let duration = HouseParameter(title: "Animation Duration", keyPath: \.duration, range: 0.2...1.5)
+    public static let duration = HouseParameter(title: "Duration", keyPath: \.duration, range: 0.2...1.5)
     public static let extraBounce = HouseParameter(title: "Extra Bounce", keyPath: \.extraBounce, range: 0...0.6)
     public static let mass = HouseParameter(title: "Mass", keyPath: \.mass, range: 0.1...10, caption: "How heavy the stone feels.")
     public static let stiffness = HouseParameter(title: "Stiffness", keyPath: \.stiffness, range: 1...300, caption: "How strongly the spring pulls back to rest.")
