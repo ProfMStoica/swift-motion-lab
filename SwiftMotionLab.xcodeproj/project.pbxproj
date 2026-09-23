@@ -21,6 +21,11 @@
 			path = SwiftMotionLab;
 			sourceTree = "<group>";
 		};
+		0FCAA53630646E1E000441EB /* docs */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = docs;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +40,7 @@
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
+				0FCAA53630646E1E000441EB /* docs */,
 				0FCAA4CF30645F1D000441EB /* readme.md */,
 				000000000000000000000010 /* SwiftMotionLab */,
 				000000000000000000000020 /* Products */,
@@ -64,6 +70,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				000000000000000000000010 /* SwiftMotionLab */,
+				0FCAA53630646E1E000441EB /* docs */,
 			);
 			name = SwiftMotionLab;
 			productName = MyApp;

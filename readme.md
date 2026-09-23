@@ -25,7 +25,7 @@ The goals of the demo are to:
 
 ## The app at a glance
 
-The project follows a small, layered structure with one view model that owns the state of the app and two plain "animator" structures that implement the actual SwiftUI``animations for the delivery of the stone and the house stones that get "hit". The tuning panel has tuning controls from whichever parameters the selected style declare so that new animations can be added without having to also change the tuning UI.
+The project follows a small, layered structure with one view model that owns the state of the app and two plain "animator" structures that implement the actual SwiftUI animations for the delivery of the stone and the house stones that get "hit". The tuning panel has tuning controls from whichever parameters the selected style declare so that new animations can be added without having to also change the tuning UI.
 
 ```
 SwiftMotionLabApp
