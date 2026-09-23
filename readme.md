@@ -132,7 +132,8 @@ case linear, easeInOut
 **2. `HouseAnimationStyle.title` **
 
 ```swift
-case .easeInOut: return "Ease In-Out"
+case .easeInOut: 
+    return "Ease In-Out"
 ```
 
 **3. `HouseAnimationStyle.description` **
@@ -145,18 +146,22 @@ case .easeInOut:
 **4. `HouseAnimationStyle.parameters` **
 
 ```swift
-case .linear, .easeInOut: return [.duration]
+case .linear, .easeInOut: 
+    return [.duration]
 ```
 
 **5. `HouseAnimator.animation` **
 
 ```swift
-case .easeInOut: curve = .easeInOut(duration: _tuning.duration)
+case .easeInOut: 
+    selectedAnimation = .easeInOut(duration: _tuning.duration)
 ```
 
 **6. `HouseAnimator.playDuration` **
-case .linear, .easeInOut: play = _tuning.duration
-
+```swift
+case .linear, .easeInOut: 
+    play = _tuning.duration
+```
 
 Running the app and switching House Animation to Ease In-Out at the same duration as Spring shows
 a visibly different feel: the stone lands exactly on its mark, with no wobble at all.
