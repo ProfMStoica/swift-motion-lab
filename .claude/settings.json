@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Glob",
+      "Grep",
+      "mcp__xcode-tools__BuildProject",
+      "mcp__xcode-tools__XcodeGlob",
+      "mcp__xcode-tools__XcodeGrep",
+      "mcp__xcode-tools__XcodeRead",
+      "mcp__xcode-tools__XcodeRefreshCodeIssuesInFile"
+    ],
+    "deny": [
+      "mcp__xcode-tools__DocumentationSearch",
+      "mcp__xcode-tools__RunCodeSnippet",
+      "mcp__xcode-tools__RunAllTests"
+    ]
+  }
+}
