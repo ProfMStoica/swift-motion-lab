@@ -52,14 +52,14 @@ public struct HouseAnimator
     }
     
     public var animation: Animation {
-        let crtAnimation: Animation
+        let selectedAnimation: Animation
         
         switch _style {
             case .linear:
-                crtAnimation = .linear(duration: _tuning.duration)
+                selectedAnimation = .linear(duration: _tuning.duration)
         }
         
-        return crtAnimation.delay(Self.startDelay)
+        return selectedAnimation.delay(Self.startDelay)
     }
     
     /// How long this style's animation takes to play, `startDelay` included — a caller waits

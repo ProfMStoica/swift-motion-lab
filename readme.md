@@ -25,7 +25,7 @@ The goals of the demo are to:
 
 ## The app at a glance
 
-The project follows a small, layered structure with one view model that owns the state of the app and two plain "animator" structures that implement the actual SwiftUI``animations for the delivery of the stone and the house stones that get "hit". The tuning panel has tuning controls from whichever parameters the selected style declare so that new animations can be added without having to also change the tuning UI.
+The project follows a small, layered structure with one view model that owns the state of the app and two plain "animator" structures that implement the actual SwiftUIanimations for the delivery of the stone and the house stones that get "hit". The tuning panel has tuning controls from whichever parameters the selected style declare so that new animations can be added without having to also change the tuning UI.
 
 ```
 SwiftMotionLabApp
@@ -132,7 +132,8 @@ case linear, easeInOut
 **2. `HouseAnimationStyle.title` **
 
 ```swift
-case .easeInOut: return "Ease In-Out"
+case .easeInOut: 
+    return "Ease In-Out"
 ```
 
 **3. `HouseAnimationStyle.description` **
@@ -145,18 +146,22 @@ case .easeInOut:
 **4. `HouseAnimationStyle.parameters` **
 
 ```swift
-case .linear, .easeInOut: return [.duration]
+case .linear, .easeInOut: 
+    return [.duration]
 ```
 
 **5. `HouseAnimator.animation` **
 
 ```swift
-case .easeInOut: curve = .easeInOut(duration: _tuning.duration)
+case .easeInOut: 
+    selectedAnimation = .easeInOut(duration: _tuning.duration)
 ```
 
 **6. `HouseAnimator.playDuration` **
-case .linear, .easeInOut: play = _tuning.duration
-
+```swift
+case .linear, .easeInOut: 
+    play = _tuning.duration
+```
 
 Running the app and switching House Animation to Ease In-Out at the same duration as Spring shows
 a visibly different feel: the stone lands exactly on its mark, with no wobble at all.
@@ -207,3 +212,4 @@ parameters: duration and extra bounce.
 - For educators: ask an Xcode agent to build a tuning lab for a different subject like biology, math or art using a panel over whatever variables that subject has.
 - Watch the WWDC26 session, "[Create UI prototypes using agents in Xcode"](https://developer.apple.com/videos/play/wwdc2026/227) for guidance on developing UI protoypes and tuning panels.
 - To learn more about using coding agents and their capabilities, watch the "[Xcode, agents, and you](https://developer.apple.com/videos/play/wwdc2026/259)" from WWDC26.
+
