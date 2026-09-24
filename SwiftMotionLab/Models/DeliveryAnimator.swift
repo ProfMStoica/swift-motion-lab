@@ -4,30 +4,40 @@ import SwiftUI
 public enum DeliveryAnimationStyle: String, CaseIterable, Identifiable
 {
     case linear
-    
+    // MARK: Spring
+    case spring
+
     public var id: String { rawValue }
-    
+
     //The title of the animation shown in the UI controls (labels, tuning panel, etc)
     public var title: String {
         switch self {
             case .linear: return "Linear"
+            // MARK: Spring
+            case .spring: return "Spring"
         }
     }
-    
+
     /// The description shown in the animation tuning panel, above the tuning controls
     public var description: String {
         switch self {
             case .linear:
                 return "Uniform motion that feels flat and artificial."
+            // MARK: Spring
+            case .spring:
+                return "A springy throw with adjustable mass, stiffness, and damping — lively instead of mechanical."
         }
     }
-    
+
     /// Which of the pre-agreed tunables in `DeliveryParameter` the panel shows for this style, in
     /// order, from the catalog in `TuningValues.swift`. `ControlPanelView` renders a slider for each one listed here.
     public var parameters: [DeliveryParameter] {
         switch self {
             case .linear:
                 return [.duration]
+            // MARK: Spring
+            case .spring:
+                return [.mass, .stiffness, .damping]
         }
     }
 }
@@ -56,22 +66,31 @@ public struct DeliveryAnimator
         switch _style {
             case .linear:
                 return .linear(duration: _tuning.duration)
+            // MARK: Spring
+            case .spring:
+                return .interpolatingSpring(mass: _tuning.mass, stiffness: _tuning.stiffness, damping: _tuning.damping)
         }
     }
-    
+
     /// How long this style's animation takes to play.
     public var playDuration: TimeInterval {
         switch _style {
             case .linear:
                 return _tuning.duration
+            // MARK: Spring — a spring has no duration, so report its settling estimate instead.
+            case .spring:
+                return _tuning.spring.settlingDuration
         }
     }
-    
+
     /// How long to wait, after release, before the house animation is triggered. Used to aproximate the physics of house stone being hit
     public var contactDelay: TimeInterval {
         switch _style {
             case .linear:
                 return playDuration * Self.monotonicContactFraction
+            // MARK: Spring — trigger at first arrival when underdamped, else fall back like linear.
+            case .spring:
+                return _tuning.spring.timeToFirstReachingTarget ?? playDuration * Self.monotonicContactFraction
         }
     }
 }
