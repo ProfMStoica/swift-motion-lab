@@ -4,29 +4,42 @@ import SwiftUI
 public enum HouseAnimationStyle: String, CaseIterable, Identifiable
 {
     case linear
-    
+    case spring // MARK: Spring
+    case easeInOut
+
     public var id: String { rawValue }
-    
+
     //The title of the animation shown in the UI controls (labels, tuning panel, etc)
     public var title: String {
         switch self {
             case .linear: return "Linear"
+            case .spring: return "Spring" // MARK: Spring
+            case .easeInOut: return "Ease In-Out"
         }
     }
-    
+
     /// The description shown in the animation tuning panel, above the tuning controls
     public var description: String {
         switch self {
             case .linear:
                 return "Uniform motion that feels flat and artificial."
+            // MARK: Spring
+            case .spring:
+                return "A springy hit that can overshoot and settle — mass, stiffness, and damping shape how lively it feels."
+            case .easeInOut:
+                return "Smooth start with a smooth finish for a calm and natural delivery"
         }
     }
-    
+
     /// Which of the pre-agreed tunables in `HouseParameter` the panel shows for this style, in
     /// order, from the catalog in `TuningValues.swift`. `ControlPanelView` renders a slider for each one listed here.
     public var parameters: [HouseParameter] {
         switch self {
             case .linear:
+                return [.duration]
+            case .spring: // MARK: Spring
+                return [.mass, .stiffness, .damping]
+            case .easeInOut:
                 return [.duration]
         }
     }
@@ -57,23 +70,34 @@ public struct HouseAnimator
         switch _style {
             case .linear:
                 selectedAnimation = .linear(duration: _tuning.duration)
+            case .spring: // MARK: Spring
+                selectedAnimation = .interpolatingSpring(mass: _tuning.mass, stiffness: _tuning.stiffness, damping: _tuning.damping)
+            
+            case .easeInOut:
+                selectedAnimation = .easeInOut(duration: _tuning.duration)
         }
-        
+
         return selectedAnimation.delay(Self.startDelay)
     }
-    
+
     /// How long this style's animation takes to play, `startDelay` included — a caller waits
     /// exactly this long and no more. A timing curve just reports its duration; a spring has no
     /// duration at all, so it reports its own settling estimate instead (see
     /// `Spring.settlingDuration`).
     public var playDuration: TimeInterval {
         let animationDuration: TimeInterval
-        
+
         switch _style {
             case .linear:
                 animationDuration = _tuning.duration
+            case .spring: // MARK: Spring
+                animationDuration = _tuning.spring.settlingDuration
+            
+            case .easeInOut:
+                animationDuration = _tuning.duration
+            
         }
-        
+
         return animationDuration + Self.startDelay
     }
 }
